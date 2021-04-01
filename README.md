@@ -24,7 +24,6 @@ docker pull erpya/adempiere-vue
 
 ## Run Docker Stack
 
-Build docker image:
 ```shell
 docker-compose up
 ```
