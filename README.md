@@ -7,6 +7,7 @@ ADempiere Web Stack
 
 
 ### For all enviroment you should run the follow images:
+
 - ADempiere gRPC: https://hub.docker.com/r/erpya/adempiere-grpc-all-in-one
 ```shell
 docker pull erpya/adempiere-grpc-all-in-one
@@ -22,6 +23,12 @@ docker pull erpya/proxy-adempiere-api
 docker pull erpya/adempiere-vue
 ```
 
+- ADempiere eCommerce: https://hub.docker.com/r/erpya/adempiere-ecommerce
+```shell
+docker pull erpya/adempiere-ecommerce
+```
+
+
 ## Run Docker Stack
 
 ```shell
@@ -31,6 +38,7 @@ docker-compose up
 Containers Running:
 * AD_GRPC_Sever
 * AD_Redis
-* AD_ES
+* AD_ElasticSearch
 * AD_Proxy_API
 * AD_Vue
+* AD_ECommerce

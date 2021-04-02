@@ -29,7 +29,7 @@ services:
 
   es7:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
-    container_name: AD_ES
+    container_name: AD_ElasticSearch
     ulimits:
       memlock:
         soft: -1
@@ -57,9 +57,10 @@ services:
       - SERVER_PORT=8085
       - AD_DEFAULT_HOST=AD_GRPC_Sever
       - AD_DEFAULT_PORT=50059
-      - ES_HOST=AD_ES
+      - ES_HOST=AD_ElasticSearch
       - ES_PORT=9200
       - VS_ENV=dev
+      - INDEX=vue_storefront_catalog
       - RESTORE_DB=N
     ports:
       - 8085:8085
@@ -72,4 +73,17 @@ services:
     environment: 
       - API_URL=http://api-rest:8085
     ports:
-      - 81:80
+      - 9526:80
+
+  e-commerce:
+    image: erpya/adempiere-ecommerce
+    container_name: AD_ECommerce
+    stdin_open: true
+    tty: true
+    environment:
+      - SERVER_PORT=3000
+      - API_URL=http://api-rest:8085
+      - STORE_INDEX=vue_storefront_catalog
+      - VS_ENV=dev
+    ports:
+      - 3000:3000
