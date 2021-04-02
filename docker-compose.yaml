@@ -65,13 +65,13 @@ services:
     ports:
       - 8085:8085
 
-  vue-front:
+  vue-app:
     image: erpya/adempiere-vue
     container_name: AD_Vue
     stdin_open: true
     tty: true
     environment: 
-      - API_URL=http://api-rest:8085
+      - API_URL=http://AD_Proxy_API:8085
     ports:
       - 9526:80
 
@@ -82,7 +82,7 @@ services:
     tty: true
     environment:
       - SERVER_PORT=3000
-      - API_URL=http://api-rest:8085
+      - API_URL=http://AD_Proxy_API:8085
       - STORE_INDEX=vue_storefront_catalog
       - VS_ENV=dev
     ports:
